@@ -16,7 +16,7 @@ public class CsvGenerator {
     private TextParser textParser;
 
     private static final String FIRST_LINE =
-            "                                      " +
+                    "                                      " +
                     "                                      " +
                     "                                      " +
                     "                                      " +
@@ -57,7 +57,6 @@ public class CsvGenerator {
         String header = buildHeader(wordCounter);
         overwriteHeader(path, header, 0);
         bw.flush();
-        log.info("file created with success");
     }
 
     private String prepareLineToWrite(List<String> words) {

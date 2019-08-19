@@ -7,7 +7,6 @@ import parser.TextParser;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;
-import java.util.logging.Logger;
 
 public class XmlGenerator {
 
@@ -21,8 +20,6 @@ public class XmlGenerator {
         this.textParser = parser;
         this.xstream = xstream;
     }
-
-    private static final Logger log = Logger.getLogger(XmlGenerator.class.getName());
 
     /**
      * Generate  XML type file.
@@ -44,7 +41,6 @@ public class XmlGenerator {
         }
         bw.write(TEXT_MARK);
         bw.flush();
-        log.info("file created with success");
     }
 
     private String prepareLineToWrite(Sentence sentence) {
