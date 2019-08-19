@@ -22,10 +22,10 @@ class TextParserTest {
         String incorrectExample = ", ; ccc, bbb aa. Third_word another_word";
         List<Sentence> correctResult = parser.parseLine(correctExample);
         List<Sentence> incorrectResult = parser.parseLine(incorrectExample);
-        Sentence correectResult = correctResult.get(0);
-        Sentence incrreectResult = incorrectResult.get(0);
+        Sentence correctSentence = correctResult.get(0);
+        Sentence incorrectSentence = incorrectResult.get(0);
 
-        assertEquals(pattern, correectResult);
-        assertNotEquals(incrreectResult, pattern);
+        assertEquals(pattern, correctSentence);
+        assertNotEquals(incorrectSentence, pattern);
     }
 }
