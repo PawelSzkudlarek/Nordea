@@ -65,10 +65,9 @@ public class CsvGenerator {
         linkedList.add("\n");
 
         int last = linkedList.size() - 1;
-        String line = String.join("",
+        return String.join("",
                 String.join(", ", linkedList.subList(0, last)),
                 linkedList.get(last));
-        return line;
     }
 
     private void updateCounter(List<String> words) {
@@ -92,7 +91,6 @@ public class CsvGenerator {
             file.write(data.getBytes());
         } catch (IOException e) {
             log.warning(e.getMessage());
-            e.printStackTrace();
         }
     }
 }

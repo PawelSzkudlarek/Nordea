@@ -50,7 +50,6 @@ public class ParserService {
             }
         } catch (IOException e) {
             log.warning(e.getMessage());
-            e.printStackTrace();
         }
     }
 }
