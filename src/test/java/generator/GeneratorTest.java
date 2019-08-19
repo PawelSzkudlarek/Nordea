@@ -41,10 +41,10 @@ public class GeneratorTest {
         assertTrue(largeOutputCsv.exists());
         assertTrue(largeOutputCsv.length() > 0);
 
-        RandomAccessFile filex = new RandomAccessFile(largeOutputCsv, "rw");
-        filex.seek(1);
-        filex.skipBytes(268); //skip whole first line by numbered bytes
-        String secondLine = filex.readLine();
+        RandomAccessFile fileToChange = new RandomAccessFile(largeOutputCsv, "rw");
+        fileToChange.seek(1);
+        fileToChange.skipBytes(268); //skip whole first line by numbered bytes
+        String secondLine = fileToChange.readLine();
         assertTrue(correctOutput.equals(secondLine));
     }
 

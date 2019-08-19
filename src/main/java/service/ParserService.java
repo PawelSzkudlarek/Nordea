@@ -1,8 +1,11 @@
 package service;
 
+import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.io.xml.DomDriver;
 import enums.FileType;
 import generator.CsvGenerator;
 import generator.XmlGenerator;
+import model.Sentence;
 import parser.TextParser;
 
 import java.io.*;
@@ -31,7 +34,11 @@ public class ParserService {
              BufferedWriter bw = new BufferedWriter(new FileWriter(output))) {
             log.info("Start generate " + fileType.toString().toLowerCase() + " file");
             if (fileType.equals(FileType.XML)) {
-                XmlGenerator xmlGenerator = new XmlGenerator(textParser);
+                XStream xstream = new XStream(new DomDriver());
+                xstream.alias("sentence", Sentence.class);
+                xstream.alias("word", String.class);
+                xstream.addImplicitCollection(Sentence.class, "words");
+                XmlGenerator xmlGenerator = new XmlGenerator(textParser, xstream);
                 xmlGenerator.generateFile(br, bw);
             } else {
                 CsvGenerator csvGenerator = new CsvGenerator(textParser);

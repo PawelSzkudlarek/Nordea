@@ -13,10 +13,6 @@ import java.util.logging.Logger;
 
 public class CsvGenerator {
 
-    public CsvGenerator(TextParser parser) {
-        this.textParser = parser;
-    }
-
     private TextParser textParser;
 
     private static final String FIRST_LINE =
@@ -31,8 +27,11 @@ public class CsvGenerator {
 
     private int wordCounter = 0;
     private int sentenceCounter = 1;
-
     private static final Logger log = Logger.getLogger(CsvGenerator.class.getName());
+
+    public CsvGenerator(TextParser parser) {
+        this.textParser = parser;
+    }
 
     /**
      * Generate  CSV type file.

@@ -15,9 +15,11 @@ public class XmlGenerator {
     private static final String TEXT_MARK = "<text> \n";
 
     private TextParser textParser;
+    private XStream xstream;
 
-    public XmlGenerator(TextParser parser) {
-        textParser = parser;
+    public XmlGenerator(TextParser parser, XStream xstream) {
+        this.textParser = parser;
+        this.xstream = xstream;
     }
 
     private static final Logger log = Logger.getLogger(XmlGenerator.class.getName());
@@ -47,11 +49,6 @@ public class XmlGenerator {
 
     private String prepareLineToWrite(Sentence sentence) {
         StringBuilder sb = new StringBuilder();
-        XStream xstream = new XStream();
-        xstream.alias("sentence", Sentence.class);
-        xstream.alias("word", String.class);
-        xstream.addImplicitCollection(Sentence.class, "words");
-
         String toXML = xstream.toXML(sentence);
         sb.append(toXML);
         sb.append("\n");
